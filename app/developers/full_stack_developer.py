@@ -1,15 +1,21 @@
 from app.developers.backend_developer import BackendDeveloper
-from app.developers.frontend_developer import FrontendDeveloper
 
 
-class FullStackDeveloper(BackendDeveloper, FrontendDeveloper):
+class FullStackDeveloper(BackendDeveloper):
 
     def __init__(self, name: str) -> None:
         super().__init__(name)
+        self.skills.extend(
+            [
+                "JavaScript",
+                "CSS",
+                "HTML",
+            ]
+        )
 
-        for skill in ["JavaScript", "HTML", "CSS"]:
-            if skill not in self.skills:
-                self.skills.append(skill)
+    def create_awesome_web_page(self) -> str:
+        print(f"{self.name} is creating a webpage...")
+        return "<h1>Hello world</h1>"
 
     def create_web_application(self) -> None:
         print(f"{self.name} started creating a web application...")
